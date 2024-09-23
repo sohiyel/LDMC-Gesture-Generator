@@ -1,0 +1,43 @@
+exp_name: DIFFUSION_EXP_BODY_1
+
+gpu_num: 0
+num_gpu: 1
+subject: Body
+dataset_name: TED_Expressive
+
+data_path: data/
+dataset: TedExpressive/
+train_data_path: train
+val_data_path: val
+test_data_path: test
+out_dir: output
+
+embed_evaluator_path: checkpoint_best.bin
+vqvae_path: output/Exp_256/VQVAE-Exp-body-epoch=402.ckpt
+
+# train params
+epochs: 500
+batch_size: 32
+lr: 2e-4
+lr_scheduler: [100, 200, 300, 400]
+gamma: 0.5
+recons_loss: l1_smooth
+eval_iter: 1
+weight_decay: 0
+loader_workers: 4
+monitor: FGD
+save_top_k: 2
+mode: min
+
+#diffusion
+nb_steps: 100
+beta_schedule: linear
+
+# dataset params
+in_pose_dim: 126
+out_pose_dim: 36
+motion_resampling_framerate: 15
+n_poses: 34
+n_pre_poses: 4
+subdivision_stride: 10
+loader_workers: 4

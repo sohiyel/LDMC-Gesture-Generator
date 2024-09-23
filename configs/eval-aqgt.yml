@@ -1,0 +1,31 @@
+exp_name: EVAL_AQGT_REF
+gpu_num: 0
+num_gpu: 1
+dataset_name: aqgt
+
+data_path: data/
+dataset: aqgt/
+train_data_path: train
+val_data_path: val
+test_data_path: test
+out_dir: output
+
+embed_evaluator_path: gesture_autoencoder_checkpoint_best.bin
+body_diffusion_path: output/Final_AQGT/Diffusion-epoch=619.ckpt
+hand_diffusion_path: output/Final_AQGT/Diffusion-epoch=379.ckpt
+body_vqvae_path: output/Final_AQGT/VQVAE-AQGT_BODY-epoch=239.ckpt
+hand_vqvae_path: output/Final_AQGT/VQVAE-AQGT-HAND-epoch=346.ckpt
+mean_vectors_path: aqgt_means.p
+
+nb_videos: 3
+model_type: diffusion
+subject: both
+loader_workers: 8
+
+# dataset params
+in_pose_dim: 159
+out_pose_dim: 33
+motion_resampling_framerate: 15
+n_poses: 34
+n_pre_poses: 4
+subdivision_stride: 10

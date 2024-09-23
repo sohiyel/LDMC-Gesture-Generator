@@ -1,0 +1,32 @@
+exp_name: EVAL_Expressive_REF
+gpu_num: 0
+num_gpu: 1
+dataset_name: TED_Expressive
+
+data_path: data/
+dataset: TedExpressive/
+train_data_path: train
+val_data_path: val
+test_data_path: test
+out_dir: output
+
+embed_evaluator_path: checkpoint_best.bin
+body_diffusion_path: output/Exp_final/512/Diffusion-epoch=139.ckpt
+hand_diffusion_path: output/Exp_final/Diffusion-hand-epoch=139.ckpt
+body_vqvae_path: output/Exp_final/512/VQVAE-body-epoch=108.ckpt
+hand_vqvae_path: output/Exp_final/Mu-hand-2-VQVAE-epoch=499.ckpt
+mean_vectors_path: expressive_means.p
+
+nb_videos: 5
+model_type: diffusion
+subject: both
+clip_duration: [10, 60]
+loader_workers: 8
+
+# dataset params
+in_pose_dim: 126
+out_pose_dim: 36
+motion_resampling_framerate: 15
+n_poses: 34
+n_pre_poses: 4
+subdivision_stride: 10

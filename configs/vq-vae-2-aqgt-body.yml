@@ -1,0 +1,49 @@
+exp_name: VQVAE_AQGT_BODY_1
+
+gpu_num: 0
+
+data_path: data/
+dataset: aqgt/
+train_data_path: train
+val_data_path: val
+test_data_path: test
+out_dir: output
+
+embed_evaluator_path: gesture_autoencoder_checkpoint_best.bin
+video_sample_path: aqgt_samples.p
+mean_vectors_path: aqgt_means.p
+
+subject: Body
+dataset_name: aqgt
+
+# train params
+epochs: 500
+batch_size: 32
+lr: 2e-4
+code_dim: 512
+lr_scheduler: [100, 200, 300, 400]
+gamma: 0.5
+nb_code: 512
+down_t: 3
+depth: 6
+dilation-growth-rate: 3
+vq-act: relu
+quantizer: ema_reset
+recons-loss: l1_smooth
+eval_iter: 20
+commit: 0.001
+contrastive: 5e-7
+save_top_k: 2
+monitor: "FGD"
+mode: "min"
+
+# dataset params
+in_pose_dim: 159
+out_pose_dim: 33
+motion_resampling_framerate: 15
+n_poses: 34
+n_pre_poses: 4
+subdivision_stride: 10
+loader_workers: 4
+
+temperature: 0.01
